@@ -1,4 +1,4 @@
-package com.sentinel.android.services;
+package com.sightstone.android.services;
 
 
 /**

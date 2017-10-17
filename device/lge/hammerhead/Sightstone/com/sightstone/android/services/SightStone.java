@@ -1,4 +1,4 @@
-package com.sentinel.android.services;
+package com.sightstone.android.services;
 
 import android.os.IBinder;
 import android.os.RemoteException;
@@ -6,7 +6,7 @@ import android.os.ServiceManager;
 import android.os.Process;
 import android.util.Log;
 
-public class CheckManager {
+public class SightStone {
     private static final String TAG = "SightStone";
     private static final String REMOTE_SERVICE_NAME = ISightStone.class.getName();
     private final ISightStone mSightStone;

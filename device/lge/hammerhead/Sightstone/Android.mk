@@ -3,9 +3,9 @@ LOCAL_PATH := $(call my-dir)
 #Build the library
 include $(CLEAR_VARS)
 LOCAL_MODULE_TAGS := optional
-LOCAL_MODULE := com.sentinel.android.services
+LOCAL_MODULE := com.sightstone.android.services
 LOCAL_SRC_FILES := $(call all-subdir-java-files)
-LOCAL_SRC_FILES += com/sentinel/android/services/ISightStone.aidl
+LOCAL_SRC_FILES += com/sightstone/android/services/ISightStone.aidl
 LOCAL_STATIC_JAVA_LIBRARIES := android-common
 #LOCAL_JAVA_LIBRARIES := core-sentinel
 include $(BUILD_JAVA_LIBRARY)
