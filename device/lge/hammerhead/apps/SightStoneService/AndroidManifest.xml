@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-      package="com.sightone.android.sightstoneservice"
+      package="com.sightstone.android.sightstoneservice"
       android:versionCode="1"
       android:versionName="1.0"
       android:sharedUserId="android.uid.system">
@@ -10,7 +10,7 @@
     <uses-permission android:name="android.permission.UPDATE_APP_OPS_STATS" />
 
 
-    <application android:name=".SightStoneServiceApp" android:persistent="true" android:theme="@style/Theme.AppCompat.Light">
+    <application android:name=".SightStoneServiceApp" android:persistent="true">
         <uses-library android:name="com.sightstone.android.services" android:required="true"/>
     </application>
 

@@ -5,7 +5,7 @@ import android.os.ServiceManager;
 import android.util.Log;
 import com.sightstone.android.services.ISightStone;
 
-public class CheckServiceApp extends Application {
+public class SightStoneServiceApp extends Application {
   private static final String TAG = "SightStoneServiceApp";
   private static final String REMOTE_SERVICE_NAME = ISightStone.class.getName();
   private ISightStoneServiceImpl serviceImpl;

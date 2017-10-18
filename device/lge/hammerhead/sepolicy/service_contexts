@@ -1,1 +1,1 @@
-com.sightstone.android.services.ISightStone                u:object_r:system_app_service:s0
+com.sightstone.android.services.ISightStone                u:object_r:sightstone_service:s0

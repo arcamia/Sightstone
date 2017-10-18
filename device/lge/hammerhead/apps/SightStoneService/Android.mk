@@ -7,6 +7,8 @@ LOCAL_REQUIRED_MODULES := com.sightstone.android.services
 LOCAL_JAVA_LIBRARIES := com.sightstone.android.services
 LOCAL_JAVA_LIBRARIES += framework
 LOCAL_JAVA_LIBRARIES += core
+LOCAL_JAVA_LIBRARIES += ext
+LOCAL_JAVA_LIBRARIES += android-common
 
 LOCAL_PACKAGE_NAME := SightStoneService
 LOCAL_PROGUARD_ENABLED := disabled

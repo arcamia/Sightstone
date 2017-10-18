@@ -23,6 +23,5 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     com.sightstone.android.services\
     com.sightstone.android.services.xml \
-    Sightstone \
-    Launcher3
-
+    Launcher3 \
+    SightStoneService
