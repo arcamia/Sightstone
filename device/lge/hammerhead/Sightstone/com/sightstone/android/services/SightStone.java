@@ -6,6 +6,10 @@ import android.os.ServiceManager;
 import android.os.Process;
 import android.util.Log;
 
+import android.content.Intent;
+
+import android.location.Location;
+
 public class SightStone {
     private static final String TAG = "SightStone";
     private static final String REMOTE_SERVICE_NAME = ISightStone.class.getName();
@@ -32,4 +36,35 @@ public class SightStone {
         }
     }
 
+    /**
+     * Retrieve the name of the package of the calling
+     * application. Check if it belongs to monitor list
+     * @param the package name of the calling process.
+     */
+    public void checkPackageName(String packageName) {
+        try {
+            Log.d(TAG, "Checking the package name");
+            this.mSightStone.checkPackageName(packageName);
+        } catch (RemoteException e) {
+            throw new RuntimeException("Failed checking the package name", e);
+        }
+    }
+
+	public boolean isBlackListed(){
+		try {
+            		Log.d(TAG, "Checking blacklist");
+            		return this.mSightStone.isBlackListed();
+        	} catch (RemoteException e) {
+			throw new RuntimeException("Failed Checking blacklist", e);
+		}
+	}	
+
+	public Location answerWithFakeLocation(String provider) {
+		try {
+            		Log.d(TAG, "playing with location");
+            		return this.mSightStone.answerWithFakeLocation(provider);
+        	} catch (RemoteException e) {
+			throw new RuntimeException("Failed playing with location", e);
+		}		
+	}
 }
