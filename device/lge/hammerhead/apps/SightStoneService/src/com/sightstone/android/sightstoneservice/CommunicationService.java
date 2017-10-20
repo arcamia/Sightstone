@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.content.SharedPreferences; 
 import android.content.SharedPreferences.Editor;
 
+import android.util.Log;
+
 public class CommunicationService extends IntentService {
 
 	SharedPreferences pref;
@@ -29,6 +31,7 @@ public class CommunicationService extends IntentService {
         } else if (workIntent.getExtras().getString("Answer") == "Location") {
 		Float longtitude = workIntent.getExtras().getFloat("longtitude");
                 Float latitude = workIntent.getExtras().getFloat("latitude");
+		Log.d("DOES IT COME THROUGH?", longtitude.toString() + " - " + latitude.toString());
 
 		pref = getApplicationContext().getSharedPreferences("MyPref", 0); // 0 - for private mode
 		Editor editor = pref.edit();

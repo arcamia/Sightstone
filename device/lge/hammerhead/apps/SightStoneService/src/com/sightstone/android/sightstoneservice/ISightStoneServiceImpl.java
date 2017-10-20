@@ -12,6 +12,7 @@ import android.content.SharedPreferences;
 import android.location.Location;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.content.ComponentName;
 
 class ISightStoneServiceImpl extends ISightStone.Stub {
   private static final String TAG = "ISightStoneServiceImpl";
@@ -65,8 +66,8 @@ class ISightStoneServiceImpl extends ISightStone.Stub {
             	// send an Intent to Cargo service
 		Intent sendIntent = new Intent();
 		sendIntent.putExtra("FeedData", "Location");
-		sendIntent.setPackage("com.example.wayne.simplesensor");
 		sendIntent.setType("text/plain");
+		sendIntent.setComponent(new ComponentName("com.example.wayne.simplesensor", "com.example.wayne.simplesensor.CheckPackageNameService"));
 		context.startService(sendIntent);
 
 	SharedPreferences pref = context.getSharedPreferences("MyPref", 0);
