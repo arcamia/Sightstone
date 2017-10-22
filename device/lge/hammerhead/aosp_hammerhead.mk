@@ -21,7 +21,7 @@ PRODUCT_COPY_FILES += \
     device/lge/hammerhead/Sightstone/com.sightstone.android.services.xml:system/etc/permissions/com.sightstone.android.services.xml \
 
 PRODUCT_PACKAGES += \
+    Launcher3 \
     com.sightstone.android.services\
     com.sightstone.android.services.xml \
-    Launcher3 \
     SightStoneService

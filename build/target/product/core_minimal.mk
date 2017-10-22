@@ -27,7 +27,6 @@ PRODUCT_PACKAGES += \
     DownloadProvider \
     HTMLViewer \
     MediaProvider \
-    PackageInstaller \
     SettingsProvider \
     Shell \
     StatementService \
@@ -77,6 +76,7 @@ PRODUCT_PACKAGES += \
     voip-common \
     webview \
     wifi-service
+    #PackageInstaller \
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.webview.xml:system/etc/permissions/android.software.webview.xml
