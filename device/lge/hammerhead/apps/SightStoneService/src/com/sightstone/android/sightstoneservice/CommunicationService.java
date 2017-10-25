@@ -3,15 +3,14 @@ package com.sightstone.android.sightstoneservice;
 import android.app.IntentService;
 import android.content.Intent;
 
-import android.content.SharedPreferences; 
-import android.content.SharedPreferences.Editor;
-
 import android.util.Log;
+
+import com.sightstone.android.sightstoneservice.Utils.SightStoneContract;
+import com.sightstone.android.sightstoneservice.Utils.FileHelper;
 
 public class CommunicationService extends IntentService {
 
-	SharedPreferences pref;
-
+    FileHelper fileHelper;
     public CommunicationService() {
         super("CommunicationService");
     }
@@ -19,28 +18,29 @@ public class CommunicationService extends IntentService {
     @Override
     protected void onHandleIntent(Intent workIntent) {
 
-        // Gets data from the incoming Intent
-        if ( workIntent.getExtras().getBoolean("Policy") == true) {
+        switch (workIntent.getAction()) {
+            // got the policy for the application
+            case SightStoneContract.APPLY_POLICY:
+                // Convert data to json format
+                StringBuilder answer = new StringBuilder();
+                answer.append("{ \""+workIntent.getStringExtra("packageName")+"\":{");
+                answer.append("\"policy\":" + workIntent.getStringExtra("policy") + ",");
+                answer.append("\"verdict\":" + workIntent.getStringExtra("verdict") + "}}");
 
+                fileHelper = new FileHelper(getApplicationContext());
+                fileHelper.saveJsonToFile(answer,workIntent.getStringExtra("packageName")+"_"+workIntent.getStringExtra("policy")+".json");
+		break;
 
-		pref = getApplicationContext().getSharedPreferences("MyPref", 0); // 0 - for private mode
-		Editor editor = pref.edit();
-		editor.putBoolean("Policy", true);
-		editor.commit();  
+            // got the new location data to update
+            case SightStoneContract.UPDATE_LOCATION:
+                // Convert data to json format
+                StringBuilder locdata = new StringBuilder();
+		locdata.append(workIntent.getStringExtra("data"));
 
-        } else if (workIntent.getExtras().getString("Answer") == "Location") {
-		Float longtitude = workIntent.getExtras().getFloat("longtitude");
-                Float latitude = workIntent.getExtras().getFloat("latitude");
-		Log.d("DOES IT COME THROUGH?", longtitude.toString() + " - " + latitude.toString());
-
-		pref = getApplicationContext().getSharedPreferences("MyPref", 0); // 0 - for private mode
-		Editor editor = pref.edit();
-		editor.putFloat("longtitude", longtitude);
-		editor.putFloat("latitude", latitude);
-		editor.commit(); 
-		
-	}
-        // Do work here, based on the contents of dataString
+                fileHelper = new FileHelper(getApplicationContext());
+                fileHelper.saveJsonToFile(locdata,SightStoneContract.LOCATION_FILE);
+		break;
+        }
 
     }
 

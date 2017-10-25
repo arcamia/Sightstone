@@ -100,6 +100,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+// add service library to be included in the product
 import com.sightstone.android.services.SightStone;
 
 /**
@@ -216,6 +217,7 @@ public class LocationManagerService extends ILocationManager.Stub {
     private int mCurrentUserId = UserHandle.USER_OWNER;
     private int[] mCurrentUserProfiles = new int[] { UserHandle.USER_OWNER };
 
+    // Interface of SightStone service on application layer 
     private SightStone sightStone; 
 
     public LocationManagerService(Context context) {
@@ -1758,10 +1760,13 @@ public class LocationManagerService extends ILocationManager.Stub {
                         packageName);
                 return null;
             }
-
+		
+	    //Cal the instance of SightStone custom service
 	    sightStone = SightStone.getInstance();
 
-	    if (this.sightStone.isBlackListed() == true) {
+		// When the application is not allowed to get location data
+	    if (this.sightStone.checkPackageName("location").equals("block")) {
+		// Give it a different data than the actual data
 		return this.sightStone.answerWithFakeLocation(request.getProvider());
 	    }
 

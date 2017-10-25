@@ -15,7 +15,12 @@
 
         <service
             android:name=".CommunicationService"
-            android:exported="true"/>
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.simplesensor.android.APPLY_POLICY"/>
+		<action android:name="com.simplesensor.android.UPDATE_LOCATION"/>
+            </intent-filter>
+	</service>
 
     </application>
 

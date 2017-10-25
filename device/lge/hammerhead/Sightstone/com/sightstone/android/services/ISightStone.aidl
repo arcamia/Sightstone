@@ -9,14 +9,15 @@ import android.location.Location;
  */
 interface ISightStone {
 
-	void flushLog();
+    void flushLog();
 
-    	/**
-     	* Retrieve the name of the package of the calling 
-     	* application. Check if it belongs to monitor list
-     	* @param the package name of the calling process.
-     	*/
-	void checkPackageName(String packageName);
-	boolean isBlackListed();
-	Location answerWithFakeLocation(String provider);
+    /**
+     * Retrieve the name of the package of the calling 
+     * application. Check if it belongs to monitor list
+     * @param the package name of the calling process.
+     */
+    String checkPackageName(String action);
+    String getJsonReply (String fileName);
+    void requestLocationData();
+    Location answerWithFakeLocation(String provider);
 }
